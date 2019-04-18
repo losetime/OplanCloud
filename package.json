@@ -1,0 +1,43 @@
+{
+  "name": "oplan_simluate",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "@babel/helper-regex": "^7.0.0",
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "echarts": "^4.1.0",
+    "echarts-amap": "^1.0.0-rc.6",
+    "element-ui": "^2.4.6",
+    "orait-ui": "^1.0.1",
+    "register-service-worker": "^1.5.2",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.22",
+    "vuescroll": "^4.9.0-beta.8",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-plugin-pwa": "^3.2.0",
+    "@vue/cli-plugin-unit-jest": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "@vue/eslint-config-prettier": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "jsdoc": "^3.5.5",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
+  }
+}

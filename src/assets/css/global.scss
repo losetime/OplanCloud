@@ -1,0 +1,26 @@
+// 全局样式文件，用来定义一些全局统一的样式
+@charset "UTF-8";
+@font-face {
+    font-family: "SourceHanSansSC-Normal";
+    src: url('/oraitStatic/font/SourceHanSansSC-Normal.otf') format("opentype"); //思源黑体，这里如果使用本地的字体文件就会报错，需要后期解决下
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "SourceHanSansSC-Medium";
+    src: url("/oraitStatic/font/SourceHanSansSC-Medium.otf") format("opentype");  //思源黑体加粗
+    font-weight: normal;
+    font-style: normal;
+  }
+html{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 19.2px;
+}
+body{  
+    font-family: 'SourceHanSansSC-Normal';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    moz-user-select: -moz-none;
+}
