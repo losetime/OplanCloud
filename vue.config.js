@@ -1,6 +1,5 @@
 module.exports = {
   publicPath: "./",
-  outputDir: "oplan_simluate",
   devServer: {
     proxy: {
       "/oraitStatic": {
