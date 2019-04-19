@@ -10,6 +10,7 @@ module.exports = {
     }
   },
   pages: {
+    //这块可以用函数替换，循环输出页面
     login: {
       // page 的入口
       entry: "src/views/login/login.js",

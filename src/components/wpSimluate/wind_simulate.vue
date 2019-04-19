@@ -23,7 +23,7 @@
             <span>恢复</span>
           </div>
           <div class="func-item">
-            <i class="iconfont icon-CombinedShapex"></i>
+            <i class="iconfont icon-xiufuyichangshuju"></i>
             <span>修复数据</span>
           </div>
           <div class="func-item">
