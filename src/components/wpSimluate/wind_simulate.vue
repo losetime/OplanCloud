@@ -15,25 +15,49 @@
         </div>
         <div class="func-list-middle">
           <div class="func-item">
-            <i class="iconfont icon-chexiao"></i>
-            <span>撤销</span>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="撤销"
+              placement="bottom"
+            >
+              <i class="iconfont iconshangyibu-xian"></i>
+            </el-tooltip>
           </div>
           <div class="func-item">
-            <i class="iconfont icon-ziyuanxhdpi"></i>
-            <span>恢复</span>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="恢复"
+              placement="bottom"
+            >
+              <i class="iconfont iconxiayibu-xian"></i>
+            </el-tooltip>
           </div>
           <div class="func-item">
-            <i class="iconfont icon-xiufuyichangshuju"></i>
-            <span>修复数据</span>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="修复数据"
+              placement="bottom"
+            >
+              <i class="iconfont iconxiufuhuaishuju-xian"></i>
+            </el-tooltip>
           </div>
           <div class="func-item">
-            <i class="iconfont icon-qingchu"></i>
-            <span>清除数据</span>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="清除数据"
+              placement="bottom"
+            >
+              <i class="iconfont iconqingchu"></i>
+            </el-tooltip>
           </div>
         </div>
         <div class="func-list-right">
           <div class="func-item" @click="openFile">
-            <i class="iconfont icon-daoru2"></i>
+            <i class="iconfont icondaoru-xian"></i>
             <span>导入</span>
           </div>
           <input
@@ -44,8 +68,8 @@
             @change="filesIn($event, 'inputData')"
             ref="inputData"
           />
-          <div class="func-item">
-            <i class="iconfont icon-daochu2"></i>
+          <div class="func-item" @click="outputFile">
+            <i class="iconfont icondaochu-xian"></i>
             <span>导出</span>
           </div>
         </div>
@@ -66,6 +90,8 @@
             v-on:getdetailData="getdetailData"
             ref="oraitTable"
             :visibleHeight="visibleHeight"
+            :tabBar="funcCheck"
+            :navBar="secondLevelMenuCheck"
           ></oraitTable>
         </div>
       </div>
@@ -85,7 +111,10 @@
 
 <script>
 import oraitTable from "./wind_simulate/oraitTable";
-import { uploadFile } from "../../assets/service/wpSimluateService.js";
+import {
+  uploadFile,
+  exportFile
+} from "../../assets/service/wpSimluateService.js";
 export default {
   data() {
     return {
@@ -100,6 +129,7 @@ export default {
       funcCheck: 0,
       secondLevelMenuCheck: 0,
       formdata: null,
+      //传给store的对象
       jumpChartUrl: {
         funcCheck: 0,
         secondLevelMenu: null,
@@ -110,8 +140,10 @@ export default {
   methods: {
     menuCheck(index) {
       this.funcCheck = index;
+      this.secondLevelMenuCheck = 0;
       //传给header的值
       this.jumpChartUrl.funcCheck = index;
+      this.jumpChartUrl.secondLevelMenuCheck = 0;
       this.$store.commit("set_jumpChartUrl", this.jumpChartUrl);
     },
     secondLevelMenuSelect(index) {
@@ -184,6 +216,16 @@ export default {
             message: "导入文件不符合模板要求，请重新导入"
           });
         });
+    },
+    //导出
+    outputFile() {
+      exportFile().then(res => {
+        if (res.err_code == 0) {
+          window.location.href = `${
+            process.env.VUE_APP_wpSimluateURL
+          }/file?file=${res.data}`;
+        }
+      });
     }
   },
   mounted() {
@@ -237,6 +279,9 @@ export default {
         justify-content: flex-end;
         flex-grow: 2;
         .func-item {
+          i {
+            font-size: 25px;
+          }
           &:hover {
             color: #61d2c4;
           }
@@ -245,7 +290,7 @@ export default {
       .func-list-left,
       .func-list-middle {
         .func-item {
-          width: 120px;
+          width: 100px;
           height: 50px;
           line-height: 50px;
           text-align: center;
@@ -258,7 +303,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-grow: 0.4;
+        flex-grow: 0.8;
         .func-item {
           width: 80px;
           height: 30px;

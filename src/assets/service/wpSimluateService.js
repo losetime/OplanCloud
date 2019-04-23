@@ -12,11 +12,14 @@ async function netWorkData() {
   return result;
 }
 //获取表格数据
-async function get_tableData(start, count) {
+async function get_tableData(start, count, tabBar, navBar) {
+  let startTest = Math.ceil(Math.random() * 100);
   let SID = localStorage.getItem("SID");
   if (SID != null) {
     await http
-      .get(`/table?sid=${SID}&start=${start}&count=${count}`)
+      .get(
+        `/table?sid=${SID}&start=${startTest}&count=${count}&tabBar=${tabBar}&navBar=${navBar}`
+      )
       .then(res => {
         result = res.data;
       });

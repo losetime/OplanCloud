@@ -5,21 +5,21 @@
         <div class="circle1" @click="skipFileSystem">
           <!-- <i class="iconfont icon-fengdian"></i> -->
           <img
-            src="/oraitStatic/img/wpSimluate/风电模拟.svg"
+            src="/oplan/img/wpSimluate/风电模拟.svg"
             class="circle1-i1"
           />
           <i class="circle1-i2">风电模拟</i>
         </div>
         <div class="circle2">
           <img
-            src="/oraitStatic/img/wpSimluate/配网规划.svg"
+            src="/oplan/img/wpSimluate/配网规划.svg"
             class="circle2-i1"
           />
           <i class="circle2-i2">配网规划</i>
         </div>
         <div class="circle3">
           <img
-            src="/oraitStatic/img/wpSimluate/负荷预测.svg"
+            src="/oplan/img/wpSimluate/负荷预测.svg"
             class="circle3-i1"
           />
           <i class="circle3-i2">负荷预测</i>
@@ -27,7 +27,7 @@
         <div class="circle4">
           <!-- <i class="circle4-i1"></i> -->
           <img
-            src="/oraitStatic/img/wpSimluate/更多功能.svg"
+            src="/oplan/img/wpSimluate/更多功能.svg"
             class="circle4-i1"
           />
           <i class="circle4-i2">更多功能</i>
@@ -58,7 +58,7 @@ export default {
   .content {
     width: 100%;
     height: 100%;
-    background: url("/oraitStatic/img/wpSimluate/更多应用.png") no-repeat;
+    background: url("/oplan/img/wpSimluate/更多应用.png") no-repeat;
     border-radius: 9px;
     overflow: hidden;
     .top {

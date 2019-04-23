@@ -4,9 +4,11 @@
       <!-- <canvas id="top-bkg" width="290px" height="159px"></canvas> -->
       <div class="top-t">
         <div class="top-t-i1">
-          <img src="/oraitStatic/img/wpSimluate/男头.png" class="top-t-img" />
+          <img src="/oplan/img/wpSimluate/男头.png" class="top-t-img" />
         </div>
-        <i class="top-t-i2" v-if="userInfo != null">{{ userInfo.username }}</i>
+        <i class="top-t-i2">{{
+          userInfo === null ? "橙智科技" : userInfo.username
+        }}</i>
         <i class="top-t-i3" v-if="userInfo != null">{{ userInfo.org_name }}</i>
       </div>
       <div class="top-b">
@@ -23,7 +25,7 @@
 
       </p> -->
       <p class="loginout" @click="log_out">
-        <i class="iconfont icon-dengchu"></i> <span>登出</span>
+        <i class="iconfont icondengchu-xian"></i> <span>登出</span>
       </p>
     </div>
   </div>
@@ -127,7 +129,7 @@ export default {
         }
       }
       .top-t-i2 {
-        font-size: var(--titleSeven);
+        font-size: var(--titlFive);
         font-family: "SourceHanSansSC-Normal";
         font-weight: 500;
         line-height: 31px;

@@ -4,7 +4,7 @@
     <div class="login-content">
       <div class="t-wrap">
         <div class="logo-wrap">
-          <i class="iconfont icon-ORAIT-logo logo-icon"></i>
+          <i class="iconfont iconshangbiao-mian logo-icon"></i>
           <p class="logo-text">OPLAN云平台</p>
         </div>
       </div>
@@ -29,8 +29,8 @@
             :class="{
               eye: true,
               iconfont: true,
-              'icon-yanjing1': eyeIcon == 1,
-              'icon-biyan': eyeIcon == 0
+              iconyanjing1: eyeIcon == 1,
+              iconbiyan: eyeIcon == 0
             }"
             @click="changeEye()"
           ></i>
@@ -176,7 +176,7 @@ export default {
 .login-wrap {
   width: 100%;
   height: 100%;
-  background: url("/oraitStatic/img/login/loginBackground2.png");
+  background: url("/oplan/img/login/loginBackground3.png");
   background-size: cover;
   background-position-y: 90%;
   background-repeat: no-repeat;
@@ -204,8 +204,8 @@ export default {
         justify-content: center;
         .logo-icon {
           font-size: 88px;
-          color: rgba(255, 119, 62, 1);
-          margin: 0 auto;
+          color: #f16a27;
+          margin: 10px auto;
         }
         .logo-text {
           margin: 0 auto;

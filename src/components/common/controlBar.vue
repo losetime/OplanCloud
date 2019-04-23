@@ -1,17 +1,15 @@
 <template>
   <div class="t-wrap">
     <div class="control-btn">
-      <div class="control iconfont icon-zshangyishou"></div>
       <div
         :class="{
           control: true,
           iconfont: true,
-          'icon-kaishi': showStartimg == true,
-          'icon-zzanting': showStartimg == false
+          'iconbofang-waiyuan-xian': showStartimg == true,
+          'iconzanting-waiyuan': showStartimg == false
         }"
         @click="startShow"
       ></div>
-      <div class="control iconfont icon-zxiayishou"></div>
     </div>
     <div class="progress-wrap">
       <div class="progress"></div>
@@ -60,7 +58,7 @@ export default {
   margin-bottom: 20px;
   .control-btn {
     margin-right: 2%;
-    width: 130px;
+    width: 50px;
     display: flex;
     justify-content: space-between;
     .control {
@@ -69,7 +67,7 @@ export default {
     }
   }
   .progress-wrap {
-    width: 88%;
+    width: 100%;
     height: 2px;
     background: #d0d0d0;
     .progress {

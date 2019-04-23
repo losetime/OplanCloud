@@ -4,11 +4,11 @@
     <div class="title-wrap">
       <div class="title-content">
         <div class="title-item" @click="goNewFile">
-          <i class="iconfont icon-jiahao"></i>
+          <i class="iconfont iconjiahao-xian"></i>
           <span>新建方案</span>
         </div>
         <div class="title-item" @click="goTrash">
-          <i class="iconfont icon-huishouzhan-mian"></i>
+          <i class="iconfont iconshanchu-xian"></i>
           <span>回收站</span>
         </div>
       </div>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <i
-      class="feedbackIcon iconfont icon-xiaoxi"
+      class="feedbackIcon iconfont iconfankui-xian"
       @click.stop="change_globalFlag(8, -8)"
     ></i>
     <feedback class="feedback" v-show="globalFlag == 8"></feedback>
@@ -120,7 +120,7 @@ export default {
     right: 26px;
     font: var(--iconTwo) "SourceHanSansSC-Normal";
     cursor: pointer;
-    color: #58EDD9;
+    color: #58edd9;
   }
   .feedback {
     position: absolute;

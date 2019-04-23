@@ -20,7 +20,7 @@ export default class District {
       (DistrictExplorer, $) => {
         //创建一个实例
         this.$ = $;
-        that.districtExplorer = new DistrictExplorer({
+        this.districtExplorer = new DistrictExplorer({
           eventSupport: value, //打开事件支持
           map: that.mapObj
         });
@@ -81,7 +81,7 @@ export default class District {
     var polys = this.districtExplorer.findFeaturePolygonsByAdcode(props.adcode);
     for (var i = 0, len = polys.length; i < len; i++) {
       polys[i].setOptions({
-        fillColor: isHover ? "rgba(255,255,255,0.3)" : null
+        fillColor: isHover ? "rgba(255,255,255,0.3)" : "#ffffff"
       });
     }
   }
@@ -101,11 +101,12 @@ export default class District {
       return {
         cursor: "default",
         bubble: true,
-        strokeColor: null, //线颜色
+        strokeColor: "#ffffff", //线颜色
         strokeOpacity: 1, //线透明度
         strokeWeight: 1, //线宽
-        fillColor: null, //填充色
-        fillOpacity: 0.2 //填充透明度
+        fillColor: "#ffffff", //填充色
+        fillOpacity: 1, //填充透明度
+        zIndex: 0
       };
     });
 
@@ -113,11 +114,12 @@ export default class District {
     this.districtExplorer.renderParentFeature(areaNode, {
       cursor: "default",
       bubble: true,
-      strokeColor: "#F57E51", //线颜色
+      strokeColor: "#3BECD6", //线颜色
       strokeOpacity: 1, //线透明度
       strokeWeight: 1, //线宽
-      fillColor: null, //填充色
-      fillOpacity: 0 //填充透明度
+      fillColor: "#ffffff", //填充色
+      fillOpacity: 0, //填充透明度
+      zIndex: 0
     });
   }
   //切换区域后刷新显示内容
@@ -165,7 +167,6 @@ export default class District {
         console.error(error);
         return;
       }
-
       if (callback) {
         callback(null, areaNode);
       }

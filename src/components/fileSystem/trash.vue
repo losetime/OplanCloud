@@ -1,8 +1,8 @@
 <template>
   <div class="trash" @click="globalFlagFn">
     <div class="title">
-      <i class="iconfont icon-a-zuo"></i>
-      <span @click="goBack">回收站</span>
+      <i class="iconfont iconzuojiantou-xian"></i>
+      <span @click="goBack">返回工作台 </span>
     </div>
     <div class="m-t-wrap">
       <span class="m-t-w-wrap">名称</span>
@@ -11,53 +11,53 @@
       <span class="m-t-w-wrap">模拟起始时间</span>
     </div>
     <div class="m-wrap">
-        <div>
-          <div
-            class="m-m-wrap"
-            v-for="(item, index) in fileData"
-            :key="index"
-            v-show="item.length != 0"
-          >
-            <div class="m-m-t-wrap">
+      <div>
+        <div
+          class="m-m-wrap"
+          v-for="(item, index) in fileData"
+          :key="index"
+          v-show="item.length != 0"
+        >
+          <div class="m-m-t-wrap">
+            <div
+              class="m-m-t-content"
+              v-for="(it, Itindex) in item"
+              :key="Itindex"
+            >
+              <div class="m-name">
+                <img src="/oplan/img/common/主网规划方案.png" />
+                <span>{{ it.name | filterName }}</span>
+              </div>
+              <div class="m-from">{{ it.user }}</div>
+              <div class="m-open">{{ it.recent }}</div>
+              <div class="m-time">{{ it.simulationRange }}</div>
               <div
-                class="m-m-t-content"
-                v-for="(it, Itindex) in item"
-                :key="Itindex"
+                class="more"
+                @mouseenter="pickMore = it.sid"
+                @mouseleave="pickMore = -1"
               >
-                <div class="m-name">
-                  <img src="/oraitStatic/img/wpSimluate/风电模拟.svg" />
-                  <span>{{ it.name | filterName }}</span>
-                </div>
-                <div class="m-from">{{ it.user }}</div>
-                <div class="m-open">{{ it.recent }}</div>
-                <div class="m-time">{{ it.simulationRange }}</div>
-                <div
-                  class="more"
-                  @mouseenter="pickMore = it.sid"
-                  @mouseleave="pickMore = -1"
-                >
-                  <i class="iconfont icon-liebiaoshezhijian"></i>
-                  <div class="bemore" v-if="pickMore == it.sid">
-                    <p @click.stop="get_restore(it)">
-                      <i class="iconfont icon-zhongmingming"></i>
-                      <span>还原</span>
-                    </p>
-                    <p @click.stop="permanently_restore(it)">
-                      <i class="iconfont icon-huishouzhan"></i>
-                      <span>永久删除</span>
-                    </p>
-                  </div>
+                <i class="iconfont icongengduo-xian"></i>
+                <div class="bemore" v-if="pickMore == it.sid">
+                  <p @click.stop="get_restore(it)">
+                    <i class="iconfont iconhuanyuan-xian"></i>
+                    <span>还原</span>
+                  </p>
+                  <p @click.stop="permanently_restore(it)">
+                    <i class="iconfont iconshanchu-xian"></i>
+                    <span>永久删除</span>
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="m-m-m-wrap">
-              <p v-if="index == 0 && item.length != 0">今日</p>
-              <p v-if="index == 1 && item.length != 0">本周</p>
-              <p v-if="index == 2 && item.length != 0">上周</p>
-              <p v-if="index == 3 && item.length != 0">更早</p>
-            </div>
+          </div>
+          <div class="m-m-m-wrap">
+            <p v-if="index == 0 && item.length != 0">今日</p>
+            <p v-if="index == 1 && item.length != 0">本周</p>
+            <p v-if="index == 2 && item.length != 0">上周</p>
+            <p v-if="index == 3 && item.length != 0">更早</p>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -83,7 +83,7 @@ export default {
     }
   },
   methods: {
-    goBack(){
+    goBack() {
       this.$router.push("/windPower");
     },
     //重新获取文件
@@ -266,7 +266,7 @@ export default {
                 left: 3px;
                 z-index: 100;
                 width: 120px;
-                background-image: url("/oraitStatic/img/wpSimluate/提示背景.png");
+                background-image: url("/oplan/img/wpSimluate/提示背景.png");
                 background-position-y: 70%;
                 transform: translateX(-50%);
                 box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.16);

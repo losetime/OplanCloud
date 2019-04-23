@@ -86,7 +86,7 @@
 import { get_tableData } from "../../../assets/service/wpSimluateService.js";
 import mixins from "../../../assets/js/oraitTable";
 export default {
-  props: ["visibleHeight"],
+  props: ["visibleHeight", "tabBar", "navBar"],
   data() {
     return {
       //可视区域数据
@@ -154,10 +154,16 @@ export default {
         }
       });
     },
-    //表格的全屏监听，只要是因为table-body这个容器不能继承父元素virtualHiehgt的高度，需要手动赋值高度
+    //表格的全屏监听，只是因为table-body这个容器不能继承父元素virtualHiehgt的高度，需要手动赋值高度
     visibleHeight(val) {
       this.setVisibleHeight(val);
       this.disposeData();
+    },
+    tabBar() {
+      this.get_tableData();
+    },
+    navBar() {
+      this.get_tableData();
     }
   },
   methods: {
@@ -178,23 +184,26 @@ export default {
     //获取表格数据
     get_tableData() {
       this.setVisibleHeight();
-      get_tableData(this.tableStart, 200).then(res => {
-        if (res.err_code == 0) {
-          this.tableBuffer = res.data;
-          this.tableData.header = this.tableBuffer.header;
-          this.tableCount = this.tableBuffer.data.length;
-          //获取表格的宽度（获取数据之后）
-          let length = this.tableBuffer.header.length + 1;
-          this.styles.setProperty("--optionWidth", 60 * length + "px");
-          //计算支撑总体数据的高度
-          this.styles.setProperty(
-            "--virtualHiehgt",
-            this.tableCount * 30 + "px"
-          );
-          this.disposeData();
-          this.$store.commit("set_loading", false);
+      this.$store.commit("set_loading", true);
+      get_tableData(this.tableStart, 200, this.tabBar, this.navBar).then(
+        res => {
+          if (res.err_code == 0) {
+            this.tableBuffer = res.data;
+            this.tableData.header = this.tableBuffer.header;
+            this.tableCount = this.tableBuffer.data.length;
+            //获取表格的宽度（获取数据之后）
+            let length = this.tableBuffer.header.length + 1;
+            this.styles.setProperty("--optionWidth", 60 * length + "px");
+            //计算支撑总体数据的高度
+            this.styles.setProperty(
+              "--virtualHiehgt",
+              this.tableCount * 30 + "px"
+            );
+            this.disposeData();
+            this.$store.commit("set_loading", false);
+          }
         }
-      });
+      );
     },
     //切片数据
     disposeData() {

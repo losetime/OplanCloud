@@ -347,7 +347,7 @@ export default class MapChart {
         {
           type: "scatter",
           symbol:
-            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oraitStatic/img/chartImg/500变电.svg",
+            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oplan/img/chartImg/500变电.svg",
           coordinateSystem: "amap",
           zlevel: 4,
           rippleEffect: {
@@ -372,7 +372,7 @@ export default class MapChart {
         {
           type: "scatter",
           symbol:
-            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oraitStatic/img/chartImg/500变电.svg", //220变电
+            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oplan/img/chartImg/500变电.svg", //220变电
           coordinateSystem: "amap",
           zlevel: 4,
           rippleEffect: {
@@ -397,7 +397,7 @@ export default class MapChart {
         {
           type: "scatter",
           symbol:
-            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oraitStatic/img/chartImg/风电站.svg",
+            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oplan/img/chartImg/风电站.svg",
           coordinateSystem: "amap",
           zlevel: 4,
           rippleEffect: {
@@ -422,7 +422,7 @@ export default class MapChart {
         {
           type: "scatter",
           symbol:
-            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oraitStatic/img/chartImg/火电站.svg",
+            "image://https://orait.oss-cn-hangzhou.aliyuncs.com/oplan/img/chartImg/火电站.svg",
           coordinateSystem: "amap",
           zlevel: 4,
           rippleEffect: {

@@ -2,7 +2,7 @@
   <div class="header-wrap">
     <div class="l-icon-wrap">
       <!-- <i class="iconfont icon-yunpingtai-caidan1" @click.stop="oraitNavFn"></i> -->
-      <img src="/oraitStatic/img/wpSimluate/风电模拟.svg" />
+      <img src="/oplan/img/wpSimluate/风电模拟.svg" />
       <p>{{ fileTitle }}</p>
     </div>
     <div class="r-icon-wrap">
@@ -27,7 +27,7 @@
             </div>
           </transition>
           <img
-            src="/oraitStatic/img/wpSimluate/男头.png"
+            src="/oplan/img/wpSimluate/男头.png"
             class="icon-nantou"
             @click.stop="information"
           />
@@ -173,7 +173,7 @@ export default {
 .header-wrap {
   height: 100%;
   width: 100%;
-  background-image: url("/oraitStatic/img/wpSimluate/header.png");
+  background-image: url("/oplan/img/wpSimluate/header.png");
   background-size: cover;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   .l-icon-wrap {

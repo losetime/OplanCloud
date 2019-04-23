@@ -46,6 +46,9 @@ export default class scatterChart extends BaseChart {
       series: [
         {
           symbolSize: 20,
+          itemStyle: {
+            color: "#58EDD9"
+          },
           data: [
             [10.0, 8.04],
             [8.0, 6.95],

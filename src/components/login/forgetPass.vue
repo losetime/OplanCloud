@@ -9,8 +9,8 @@
             <i
               :class="{
                 iconfont: true,
-                'icon-yunpingtaidenglu-zhengque': progress.userHint == true,
-                'icon-wait': progress.userHint == false
+                iconzhengque: progress.userHint == true,
+                iconwait: progress.userHint == false
               }"
             ></i>
             <p>账号验证</p>
@@ -20,8 +20,8 @@
             <i
               :class="{
                 iconfont: true,
-                'icon-yunpingtaidenglu-zhengque': progress.resetPass == true,
-                'icon-wait': progress.resetPass == false
+                iconzhengque: progress.resetPass == true,
+                iconwait: progress.resetPass == false
               }"
             ></i>
             <p>重置密码</p>
@@ -31,8 +31,8 @@
             <i
               :class="{
                 iconfont: true,
-                'icon-yunpingtaidenglu-zhengque': progress.resetSuccess == true,
-                'icon-wait': progress.resetSuccess == false
+                iconzhengque: progress.resetSuccess == true,
+                iconwait: progress.resetSuccess == false
               }"
             ></i>
             <p>重置成功</p>
@@ -80,8 +80,8 @@
                 :class="{
                   eye: true,
                   iconfont: true,
-                  'icon-yanjing1': eyeIcon_one == 1,
-                  'icon-biyan': eyeIcon_one == 0
+                  iconyanjing1: eyeIcon_one == 1,
+                  iconbiyan: eyeIcon_one == 0
                 }"
                 @click="changeEye('eyeIcon_one')"
               ></i>
@@ -102,8 +102,8 @@
                 :class="{
                   eye: true,
                   iconfont: true,
-                  'icon-yanjing1': eyeIcon_two == 1,
-                  'icon-biyan': eyeIcon_two == 0
+                  iconyanjing1: eyeIcon_two == 1,
+                  iconbiyan: eyeIcon_two == 0
                 }"
                 @click="changeEye('eyeIcon_two')"
               ></i>
@@ -527,7 +527,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: url("/oraitStatic/img/login/registerBar2.png");
+      background: url("/oplan/img/login/registerBar2.png");
       background-size: 115%;
       background-repeat: no-repeat;
       background-position: 50%;
@@ -565,6 +565,7 @@ export default {
           align-items: center;
           i {
             font-size: 34px;
+            color: #58edd9;
           }
           p {
             font-size: 14px;

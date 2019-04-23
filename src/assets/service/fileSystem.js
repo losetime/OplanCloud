@@ -60,10 +60,23 @@ async function del_file_shallow(SID) {
     });
   return result;
 }
-//获取潮流数据
+//获取潮流线数据数据
 async function getNetWork() {
   await http
-    .get(`/pvplant/getInfo`)
+    .get(`http://192.168.31.6:5000/pvplant/getInfo`)
+    .then(res => {
+      result = res.data;
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  return result;
+}
+
+//获取潮流节点数据
+async function getTransformerSubPoint() {
+  await http
+    .get(`http://192.168.31.6:5000/pvplant/getStationInfoNew`)
     .then(res => {
       result = res.data;
     })
@@ -92,5 +105,6 @@ export {
   set_fileName,
   del_file_shallow,
   getNetWork,
+  getTransformerSubPoint,
   getRegion
 };

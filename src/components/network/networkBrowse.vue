@@ -33,7 +33,7 @@
           >
           </el-option>
         </el-select>
-        <el-select
+        <!-- <el-select
           v-model="selectValue3"
           size="small"
           placeholder="请选择区"
@@ -47,7 +47,7 @@
             :value="item.adcode"
           >
           </el-option>
-        </el-select>
+        </el-select> -->
       </div>
       <p class="subarea-menu-title">分层</p>
       <div class="area-wrap">
@@ -96,7 +96,10 @@
           placement="left"
           :hide-after="3000"
         >
-          <i class="iconfont icon-tuopu" @click.stop="change_globalFlag(4, -4)">
+          <i
+            class="iconfont iconguihua-xian"
+            @click.stop="change_globalFlag(4, -4)"
+          >
             <i class="line"></i>
           </i>
         </el-tooltip>
@@ -107,7 +110,10 @@
           placement="left"
           :hide-after="3000"
         >
-          <i class="iconfont icon-moni" @click.stop="change_globalFlag(5, -5)">
+          <i
+            class="iconfont iconyunhangmoni-xian"
+            @click.stop="change_globalFlag(5, -5)"
+          >
             <i class="line"></i>
           </i>
         </el-tooltip>
@@ -147,13 +153,17 @@ export default {
       networkData: [], //网架总数据
       TransformerSub: [], //变电站数组对象
       arrPoint: [], //网架线路数据
-      powerStationPoint: [], //发电站数据[风 火 水 光 抽]
+      powerStationType: [], //发电站类型[风 火 水 光 抽]
       // 模拟参数标题
       parameterTitle: ["规划开始时间", "规划结束时间", "开始规划"],
       parameterTitle2: ["运行模拟开始时间", "运行模拟结束时间", "开始模拟"]
     };
   },
   methods: {
+    handleTime(time) {
+      let date = new Date(time);
+      return date.getFullYear() + "-" + date.getMonth() + 1;
+    },
     globalFlagFn() {
       this.$store.commit("set_globalFlag", 0);
     },
@@ -192,6 +202,7 @@ export default {
       getRegion(value).then(res => {
         if (res != null && res.err_code === 0) {
           this.selectlist2 = res.data;
+          this.getNetWork();
         }
       });
     },
@@ -225,9 +236,7 @@ export default {
     /**
      * 选择区联动
      */
-    setLinkage(istrue) {
-      this.districtExplorer = new District(this.map);
-      this.districtExplorer.init(istrue);
+    setLinkage() {
       Object.defineProperty(this.districtExplorer, "adcode", {
         set: () => {
           let feature = this.districtExplorer.feature;
@@ -267,21 +276,25 @@ export default {
     //控制线路的显示
     setLineLevel(index, isTrue) {
       if (isTrue) {
-        this.TransformerSub[index].show();
         this.pathSimplifierIns[index].show();
+        this.TransformerSub[index].forEach(item => {
+          item.show();
+        });
       } else {
-        this.TransformerSub[index].hide();
         this.pathSimplifierIns[index].hide();
+        this.TransformerSub[index].forEach(item => {
+          item.hide();
+        });
       }
     },
     //控制发电场的显示
     setPointLevel(index, isTrue) {
       if (isTrue) {
-        this.powerStationPoint[index].forEach(item => {
+        this.powerStationType[index].forEach(item => {
           item.show();
         });
       } else {
-        this.powerStationPoint[index].forEach(item => {
+        this.powerStationType[index].forEach(item => {
           item.hide();
         });
       }
@@ -289,16 +302,15 @@ export default {
     //销毁潮流图的所有对象
     clearNetWork() {
       // 清除所有点
-      this.powerStationPoint.forEach(parentItem => {
+      this.powerStationType.forEach(parentItem => {
         parentItem.forEach(item => {
           item.setMap(null);
         });
       });
-      this.powerStationPoint = [];
+      this.powerStationType = [];
       // 清除所有巡航器
       this.pathSimplifierIns.forEach(item => {
         // item.hide(); //todo 这块还没找到清除线的方法
-
         item.clearPathNavigators();
         this.map.remove(item);
       });
@@ -335,6 +347,13 @@ export default {
           this.setPowerStationPoint();
         }
       });
+      //获取变电站数据
+      // getTransformerSubPoint().then(res => {
+      //   if (res != null && res.err_code === 0) {
+      //     this.TransformerSub = res.data;
+      //     this.setTransformerSubPoint();
+      //   }
+      // });
     },
     /**
      * 设置潮流网架(会被多次调用)
@@ -342,7 +361,7 @@ export default {
     setNetWork(typeName, pathSimpIndex) {
       let arrline = [];
       let arrPoint = [];
-      let imgSrc1 = "/oraitStatic/img/common/变电站.png";
+      let imgSrc1 = "/oplan/img/common/变电站.png";
       //根据typeName过滤数据
       this.networkData.lineData.map((item, index) => {
         if (item.typeName === typeName) {
@@ -353,7 +372,15 @@ export default {
               status: item.status
             });
           });
-          //根据type获取这一类型变电站点
+          /**
+           * 根据type获取这一类型变电站点
+           * item数据结构
+           * coords: Object
+           * fromName: "平城"
+           * status: "空载"
+           * toName: "雁同"
+           * typeName: "500KV线路"
+           */
           arrPoint.push({
             lnglat: item.coords.center.start,
             name: item.fromName,
@@ -370,7 +397,7 @@ export default {
             this.setPathNavigator(
               pathSimpIndex,
               index,
-              "./oraitStatic/img/common/空载.png",
+              "./oplan/img/common/空载.png",
               "rgba(255, 247, 230, 0.2)"
             );
             break;
@@ -378,7 +405,7 @@ export default {
             this.setPathNavigator(
               pathSimpIndex,
               index,
-              "./oraitStatic/img/common/轻载.png",
+              "./oplan/img/common/轻载.png",
               "rgba(82, 196, 26, 0.2)"
             );
             break;
@@ -386,7 +413,7 @@ export default {
             this.setPathNavigator(
               pathSimpIndex,
               index,
-              "./oraitStatic/img/common/重载.png",
+              "./oplan/img/common/重载.png",
               "rgba(8, 151, 156, 0.2)"
             );
             break;
@@ -394,7 +421,7 @@ export default {
             this.setPathNavigator(
               pathSimpIndex,
               index,
-              "./oraitStatic/img/common/满载.png",
+              "./oplan/img/common/满载.png",
               "rgba(245, 34, 45, 0.2)"
             );
             break;
@@ -402,7 +429,7 @@ export default {
             this.setPathNavigator(
               pathSimpIndex,
               index,
-              "./oraitStatic/img/common/过载.png",
+              "./oplan/img/common/过载.png",
               "rgba(82, 3, 57, 0.2)"
             );
             break;
@@ -410,7 +437,7 @@ export default {
             this.setPathNavigator(
               pathSimpIndex,
               index,
-              "./oraitStatic/img/common/停供.png",
+              "./oplan/img/common/停供.png",
               "rgba(232, 232, 232, 0.2)"
             );
             break;
@@ -419,25 +446,25 @@ export default {
       //变电站调用
       switch (typeName) {
         case "220KV线路":
-          this.setTransformerSubPoint(arrPoint, pathSimpIndex, {
-            url: imgSrc1,
-            anchor: new window.AMap.Pixel(6, 6),
-            size: new window.AMap.Size(12, 12)
-          });
+          this.setTransformerSubPoint(
+            arrPoint,
+            pathSimpIndex,
+            new window.AMap.Size(15, 15)
+          );
           break;
         case "500KV线路":
-          this.setTransformerSubPoint(arrPoint, pathSimpIndex, {
-            url: imgSrc1,
-            anchor: new window.AMap.Pixel(8, 8),
-            size: new window.AMap.Size(16, 16)
-          });
+          this.setTransformerSubPoint(
+            arrPoint,
+            pathSimpIndex,
+            new window.AMap.Size(18, 18)
+          );
           break;
         case "800KV直流":
-          this.setTransformerSubPoint(arrPoint, pathSimpIndex, {
-            url: imgSrc1,
-            anchor: new window.AMap.Pixel(6, 6),
-            size: new window.AMap.Size(1, 1)
-          });
+          this.setTransformerSubPoint(
+            arrPoint,
+            pathSimpIndex,
+            new window.AMap.Size(20, 20)
+          );
           break;
       }
     },
@@ -475,37 +502,92 @@ export default {
     /**
      * 设置变电站点
      */
-    setTransformerSubPoint(arrPoint, pathSimpIndex, styleObj) {
-      this.TransformerSub[pathSimpIndex] = new window.AMap.MassMarks(arrPoint, {
-        opacity: 1,
-        cursor: "pointer",
-        style: styleObj,
-        bubble: true
+    setTransformerSubPoint(arrPoint, pathSimpIndex, iconSize) {
+      this.TransformerSub[pathSimpIndex] = [];
+      //大小需要随着电压等级变化
+      arrPoint.forEach((item, index) => {
+        let itemObj = new window.AMap.Marker({
+          icon: new window.AMap.Icon({
+            size: iconSize, // 图标尺寸
+            image: `/oplan/img/common/变电站.png`, // Icon的图像
+            // imageOffset: new AMap.Pixel(0, -60), // 图像相对展示区域的偏移量，适于雪碧图等
+            imageSize: iconSize // 根据所设置的大小拉伸或压缩图片
+          }),
+          position: new window.AMap.LngLat(item.lnglat[0], item.lnglat[1]),
+          offset: new window.AMap.Pixel(-10, -10),
+          zIndex: 400,
+          bubble: true
+        });
+        var infoWindow = new window.AMap.InfoWindow({
+          anchor: "top-cneter",
+          content: `<p style="font-size:14px;">${item.name}变电站</p>`,
+          offset: new window.AMap.Pixel(0, 0)
+        });
+        itemObj.on("mouseover", e => {
+          infoWindow.open(this.map, e.target.getPosition());
+        });
+        itemObj.on("mouseout", e => {
+          infoWindow.close();
+        });
+        this.TransformerSub[pathSimpIndex].push(itemObj);
       });
-      this.TransformerSub[pathSimpIndex].setMap(this.map);
+      this.map.add(this.TransformerSub[pathSimpIndex]);
     },
     /**
      * 设置发电站点
      */
     setPowerStationPoint() {
       this.legendPointArr.forEach((itemType, indexType) => {
-        this.powerStationPoint[indexType] = [];
-        this.networkData.powerStationData.forEach(itemData => {
+        this.powerStationType[indexType] = [];
+        this.networkData.powerStationData.forEach((itemData, index) => {
           let itemObj = new window.AMap.Marker({
-            icon: `/oraitStatic/img/common/${itemType}.png`,
+            icon: new window.AMap.Icon({
+              size: new window.AMap.Size(25, 25), // 图标尺寸
+              image: `/oplan/img/common/${itemType}.png`, // Icon的图像
+              // imageOffset: new AMap.Pixel(0, -60), // 图像相对展示区域的偏移量，适于雪碧图等
+              imageSize: new window.AMap.Size(25, 25) // 根据所设置的大小拉伸或压缩图片
+            }),
             position: new window.AMap.LngLat(
               itemData.coords[0],
               itemData.coords[1]
             ),
-            offset: new window.AMap.Pixel(-13, -30),
-            zIndex: 300,
+            offset: new window.AMap.Pixel(-12, -12),
+            zIndex: 500,
             bubble: true
           });
+          var infoWindow = new window.AMap.InfoWindow({
+            anchor: "top-cneter",
+            content: `<h2 style="color:#FF773E;font-weight:700;">相关信息</h2>
+                      <div style="font-size:14px;">
+                        <p>公司代码:${itemData.Info.company_id}</p>
+                        <p>强迫停运率：${itemData.Info.forced_outage_rate}</p>
+                        <p>最大容量：${itemData.Info.max_capacity}</p>
+                        <p>最小出力:${itemData.Info.min_capacity}</p>
+                        <p>实际投产日期：${this.handleTime(
+                          itemData.Info.starting_date
+                        )}</p>
+                        <p>退役日期：${this.handleTime(
+                          itemData.Info.retirement_date
+                        )}</p>
+                        <p>机组容量：${itemData.Info.station_capacity}</p>
+                        <p>机组数量：${itemData.Info.station_num}</p>
+                        <p>抽蓄转换效率：${
+                          itemData.Info.transfer_efficiency
+                        }</p>
+                      </div>`,
+            offset: new window.AMap.Pixel(0, 0)
+          });
+          itemObj.on("mouseover", e => {
+            infoWindow.open(this.map, e.target.getPosition());
+          });
+          itemObj.on("mouseout", e => {
+            infoWindow.close();
+          });
           if (itemData.type == itemType) {
-            this.powerStationPoint[indexType].push(itemObj);
+            this.powerStationType[indexType].push(itemObj);
           }
         });
-        this.map.add(this.powerStationPoint[indexType]);
+        this.map.add(this.powerStationType[indexType]);
       });
     },
     /**
@@ -517,8 +599,8 @@ export default {
       var map = new window.AMap.Map("container", {
         resizeEnable: true, //是否监控地图容器尺寸变化
         zoom: 4,
-        // mapStyle: "amap://styles/e25d1b435096a86a01fe3f51bf7f0250"
-        mapStyle: "amap://styles/b0f5b8ee3d3473aca18fcaff1df0bce9"
+        mapStyle: "amap://styles/e25d1b435096a86a01fe3f51bf7f0250"
+        // mapStyle: "amap://styles/b0f5b8ee3d3473aca18fcaff1df0bce9"
       });
       map.on("zoomend", this.getMapZoom);
       //创建自定义切片图层，指定 getTileUrl 属性
@@ -565,7 +647,7 @@ export default {
             this.pathSimplifierIns[index] = new PathSimplifier({
               autoSetFitView: false,
               map: this.map, //所属的地图实例
-              zIndex: 0,
+              zIndex: 110,
               getPath: function(pathData) {
                 return pathData.path;
               },
@@ -586,8 +668,8 @@ export default {
               renderOptions: {
                 pathLineStyle: {
                   // strokeStyle: "#FFF7E6",
-                  strokeStyle: "#373737",
-                  borderStyle: "#373737",
+                  strokeStyle: "#E5E5E5",
+                  borderStyle: "#E5E5E5",
                   dirArrowStyle: false,
                   lineWidth: lineWidth
                 },
@@ -641,14 +723,14 @@ export default {
         this.TransformerSub.forEach((item, index) => {
           this.setLineLevel(index, false);
         });
-        this.powerStationPoint.forEach((item, index) => {
+        this.powerStationType.forEach((item, index) => {
           this.setPointLevel(index, false);
         });
       } else {
         this.TransformerSub.forEach((item, index) => {
           this.setLineLevel(index, true);
         });
-        this.powerStationPoint.forEach((item, index) => {
+        this.powerStationType.forEach((item, index) => {
           this.setPointLevel(index, true);
         });
       }
@@ -660,9 +742,13 @@ export default {
     }
   },
   mounted() {
-    this.initMap();
-    this.getCity(140000);
-    this.setLinkage(true);
+    this.$nextTick(() => {
+      this.initMap();
+      this.districtExplorer = new District(this.map);
+      this.districtExplorer.init(false);
+      this.getCity(140000);
+    });
+    // this.setLinkage(true);
   },
   components: {
     Legend,
@@ -697,7 +783,7 @@ export default {
       align-items: center;
       justify-content: space-around;
       width: 100%;
-      min-height: 150px;
+      min-height: 80px;
       .select {
         width: 60%;
       }

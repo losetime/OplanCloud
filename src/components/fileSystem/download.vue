@@ -72,7 +72,7 @@ $color: #f57e51;
     }
   }
   div.newFile {
-    background: url("/oraitStatic/img/wpSimluate/新增.png") no-repeat;
+    background: url("/oplan/img/wpSimluate/新增.png") no-repeat;
     background-size: 102% 100%;
     border: 1px solid $color;
     @include hover;
@@ -81,13 +81,13 @@ $color: #f57e51;
     }
   }
   div.down15 {
-    background: url("/oraitStatic/img/wpSimluate/下载15分钟模板.png") no-repeat;
+    background: url("/oplan/img/wpSimluate/下载15分钟模板.png") no-repeat;
     background-size: 102% 100%;
     border: 1px solid $color;
     @include hover;
   }
   div.down30 {
-    background: url("/oraitStatic/img/wpSimluate/下载30分钟模板.png") no-repeat;
+    background: url("/oplan/img/wpSimluate/下载30分钟模板.png") no-repeat;
     background-size: 102% 100%;
     border: 1px solid #dedede;
     i {
@@ -95,7 +95,7 @@ $color: #f57e51;
     }
   }
   div.down60 {
-    background: url("/oraitStatic/img/wpSimluate/下载60分钟模板.png") no-repeat;
+    background: url("/oplan/img/wpSimluate/下载60分钟模板.png") no-repeat;
     background-size: 102% 100%;
     border: 1px solid #dedede;
     i {

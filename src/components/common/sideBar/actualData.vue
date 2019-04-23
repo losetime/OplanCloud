@@ -60,7 +60,7 @@ export default {
   .top {
     width: 100%;
     height: 30px;
-    background: url("/oraitStatic/img/wpSimluate/实际数据.png") no-repeat;
+    background: url("/oplan/img/wpSimluate/实际数据.png") no-repeat;
     position: relative;
     i {
       position: absolute;

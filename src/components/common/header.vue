@@ -2,7 +2,7 @@
   <div class="header">
     <el-tooltip class="item" effect="dark" content="返回" placement="bottom">
       <div class="l-icon-wrap" @click="skipFileSystem">
-        <img src="/oraitStatic/img/wpSimluate/ORAIT.png" />
+        <img src="/oplan/img/wpSimluate/ORAIT.png" />
       </div>
     </el-tooltip>
     <div class="r-icon-wrap">
@@ -79,19 +79,22 @@
         />
       </div>
       <div class="r-list">
-        <div class="func-list-right" v-show="$route.meta.breadcrumbName !== 'fileSystem'">
-            <div class="func-item" @click="gotableData">
-              <i class="iconfont "></i>
-              <span>表</span>
-            </div>
-            <div class="func-item" @click="goChartshow">
-              <i class="iconfont "></i>
-              <span>图</span>
-            </div>
-            <div class="func-item" @click="goNetwork">
-              <i class="iconfont "></i>
-              <span>拓扑</span>
-            </div>
+        <div
+          class="func-list-right"
+          v-show="$route.meta.breadcrumbName !== 'fileSystem'"
+        >
+          <div class="func-item" @click="gotableData">
+            <i class="iconfont "></i>
+            <span>表</span>
+          </div>
+          <div class="func-item" @click="goChartshow">
+            <i class="iconfont "></i>
+            <span>图</span>
+          </div>
+          <div class="func-item" @click="goNetwork">
+            <i class="iconfont "></i>
+            <span>拓扑</span>
+          </div>
         </div>
         <div class="user-info">
           <transition name="information-fade">
@@ -100,10 +103,7 @@
             </div>
           </transition>
           <div @click.stop="information" class="avatar-wrap">
-             <img
-              src="/oraitStatic/img/wpSimluate/男头.png"
-              class="icon-nantou"
-            />
+            <img src="/oplan/img/wpSimluate/男头.png" class="icon-nantou" />
           </div>
         </div>
         <!-- <i class="line"></i> -->
@@ -189,10 +189,11 @@ export default {
       if (this.globalFlag == 1) {
         this.$store.commit("set_globalFlag", 0);
       } else {
-        find_user().then(res => {
-          this.userInfo = res.data.body_data;
-          this.$store.commit("set_globalFlag", 1);
-        });
+        this.$store.commit("set_globalFlag", 1);
+        // find_user().then(res => {
+        //   this.userInfo = res.data.body_data;
+        //   this.$store.commit("set_globalFlag", 1);
+        // });
       }
     },
     //新建
@@ -421,17 +422,15 @@ export default {
       }
     }
     .r-list {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
       width: 600px;
-      height: 100%;
-      box-sizing: border-box;
+      height: 50px;
       .func-list-right {
+        float: left;
+        width: 90%;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-grow: 0.4;
         .func-item {
           width: 88px;
           height: 32px;
@@ -445,7 +444,7 @@ export default {
           font-size: var(--titleSix);
           &:hover {
             background: #ffffff;
-            color: #58EDD9;
+            color: #58edd9;
           }
         }
       }
@@ -456,8 +455,12 @@ export default {
         background-color: #fff;
       }
       .user-info {
-        width: 100%;
-        height: 40px;
+        float: right;
+        width: 10%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: relative;
         .avatar-wrap {
           width: 40px;
@@ -466,7 +469,6 @@ export default {
           justify-content: center;
           align-items: center;
           float: right;
-          margin-right: 100px;
           .icon-nantou {
             width: 30px;
             height: 30px;
@@ -485,8 +487,8 @@ export default {
           justify-content: center;
           overflow: hidden;
           position: absolute;
-          top: 39px;
-          right: -32px;
+          top: 50px;
+          right: 0;
           z-index: 100;
         }
         .information-fade-enter-active {

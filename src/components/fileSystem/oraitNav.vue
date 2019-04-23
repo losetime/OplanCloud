@@ -3,22 +3,22 @@
     <!-- <img src="./orait.png"> -->
     <ul class="list">
       <li class="list-li-one" @click="windPower">
-        <img src="/oraitStatic/img/wpSimluate/风电模拟.svg" />
+        <img src="/oplan/img/wpSimluate/风电模拟.svg" />
         <span>风电模拟</span>
       </li>
       <li class="list-li-two">
-        <img src="/oraitStatic/img/wpSimluate/光伏模拟.svg" />
+        <img src="/oplan/img/wpSimluate/光伏模拟.svg" />
         <span>光伏模拟</span>
       </li>
       <li class="list-li-three">
-        <img src="/oraitStatic/img/wpSimluate/分布式出力模拟.svg" />
+        <img src="/oplan/img/wpSimluate/分布式出力模拟.svg" />
         <span>分布式出力模拟</span>
       </li>
       <li class="list-li-four" @click="trash">
         <i class="iconfont icon-huishouzhan-mian"></i> <span>回收站</span>
       </li>
       <li class="list-li-five">
-        <img src="/oraitStatic/img/wpSimluate/云端硬盘.svg" />
+        <img src="/oplan/img/wpSimluate/云端硬盘.svg" />
         <span>ORAIT云端</span>
       </li>
     </ul>

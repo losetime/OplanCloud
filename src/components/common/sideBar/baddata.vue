@@ -81,7 +81,7 @@ export default {
     color: #fff;
   }
   .data-box {
-    background: url("/oraitStatic/img/wpSimluate/实际数据.png") no-repeat;
+    background: url("/oplan/img/wpSimluate/实际数据.png") no-repeat;
     width: 100%;
     height: 100%;
     background-color: #f5f5f5;

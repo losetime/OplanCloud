@@ -8,66 +8,65 @@
         <span class="b-t-w-wrap">模拟起止时间</span>
       </div>
       <div class="b-b-wrap">
-          <div
-            class="b-m-wrap"
-            v-for="(item, index) in fileData"
-            :key="index"
-            v-show="item.length != 0"
-          >
-            <div class="b-m-t-wrap">
+        <div
+          class="b-m-wrap"
+          v-for="(item, index) in fileData"
+          :key="index"
+          v-show="item.length != 0"
+        >
+          <div class="b-m-t-wrap">
+            <div
+              v-for="(it, Itindex) in item"
+              :key="Itindex"
+              :class="{
+                'b-m-t-content': true,
+                'item-check': itemCheck[0] === index && itemCheck[1] === Itindex
+              }"
+              @dblclick="go_simulate(it)"
+              @click="listChecked(index, Itindex)"
+            >
+              <div class="b-name">
+                <img src="/oplan/img/common/主网规划方案.png" alt />
+                <span>{{ it.name | filterName }}</span>
+              </div>
+              <div class="b-from">{{ it.user }}</div>
+              <div class="b-open">{{ it.recent }}</div>
+              <div class="b-time">{{ it.simulationRange }}</div>
+              <input
+                type="text"
+                class="u-rename"
+                v-show="showRename == Itindex"
+                v-model="fileNameValue"
+                @blur="sumbitTitle(it)"
+                @keyup.enter="sumbitTitle(it)"
+                @click.stop
+              />
               <div
-                v-for="(it, Itindex) in item"
-                :key="Itindex"
-                :class="{
-                  'b-m-t-content': true,
-                  'item-check':
-                    itemCheck[0] === index && itemCheck[1] === Itindex
-                }"
-                @dblclick="go_simulate(it)"
-                @click="listChecked(index, Itindex)"
+                class="more"
+                @mouseenter="pickMore = it.sid"
+                @mouseleave="pickMore = -1"
               >
-                <div class="b-name">
-                  <img src="/oraitStatic/img/wpSimluate/风电模拟.svg" alt />
-                  <span>{{ it.name | filterName }}</span>
-                </div>
-                <div class="b-from">{{ it.user }}</div>
-                <div class="b-open">{{ it.recent }}</div>
-                <div class="b-time">{{ it.simulationRange }}</div>
-                <input
-                  type="text"
-                  class="u-rename"
-                  v-show="showRename == Itindex"
-                  v-model="fileNameValue"
-                  @blur="sumbitTitle(it)"
-                  @keyup.enter="sumbitTitle(it)"
-                  @click.stop
-                />
-                <div
-                  class="more"
-                  @mouseenter="pickMore = it.sid"
-                  @mouseleave="pickMore = -1"
-                >
-                  <i class="iconfont icon-liebiaoshezhijian"></i>
-                  <div class="bemore" v-show="pickMore == it.sid">
-                    <p @click.stop="reName(it, Itindex)">
-                      <i class="iconfont icon-zhongmingming"></i>
-                      <span>重命名</span>
-                    </p>
-                    <p @click.stop="del_file(it)">
-                      <i class="iconfont icon-huishouzhan"></i>
-                      <span>删除</span>
-                    </p>
-                  </div>
+                <i class="iconfont icongengduo-xian"></i>
+                <div class="bemore" v-show="pickMore == it.sid">
+                  <p @click.stop="reName(it, Itindex)">
+                    <i class="iconfont iconzhongmingming-xian"></i>
+                    <span>重命名</span>
+                  </p>
+                  <p @click.stop="del_file(it)">
+                    <i class="iconfont iconshanchu-xian"></i>
+                    <span>删除</span>
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="b-m-b-wrap">
-              <p v-if="index == 0 && item.length != 0">今日</p>
-              <p v-if="index == 1 && item.length != 0">本周</p>
-              <p v-if="index == 2 && item.length != 0">上周</p>
-              <p v-if="index == 3 && item.length != 0">更早</p>
-            </div>
           </div>
+          <div class="b-m-b-wrap">
+            <p v-if="index == 0 && item.length != 0">今日</p>
+            <p v-if="index == 1 && item.length != 0">本周</p>
+            <p v-if="index == 2 && item.length != 0">上周</p>
+            <p v-if="index == 3 && item.length != 0">更早</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -294,7 +293,7 @@ export default {
                 left: 3px;
                 z-index: 100;
                 width: 110px;
-                background-image: url("/oraitStatic/img/wpSimluate/提示背景.png");
+                background-image: url("/oplan/img/wpSimluate/提示背景.png");
                 background-position-y: 70%;
                 transform: translateX(-50%);
                 box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.16);

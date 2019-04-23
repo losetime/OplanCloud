@@ -468,7 +468,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: url("/oraitStatic/img/login/registerBar2.png");
+      background: url("/oplan/img/login/registerBar2.png");
       background-size: 115%;
       background-repeat: no-repeat;
       background-position: 50%;

@@ -1,13 +1,13 @@
 <template>
   <div style="position:relative;">
     <div class="lineBox" v-for="(item, index) in legendLineArr" :key="index">
-      <i class="iconfont icon-xianlu"></i>
+      <i class="iconfont iconfont1 iconxianlu-xian"></i>
       <span>{{ item }}</span>
       <i
         :class="{
           iconfont: true,
-          'icon-yanjing1': powerPlantFlag[index] == true,
-          'icon-biyan': powerPlantFlag[index] == false
+          iconyanjing1: powerPlantFlag[index] == true,
+          iconbiyan: powerPlantFlag[index] == false
         }"
         @click="isLineVisible(index)"
       ></i>
@@ -23,8 +23,8 @@
         <i
           :class="{
             iconfont: true,
-            'icon-yanjing1': item.show == true,
-            'icon-biyan': item.show == false
+            iconyanjing1: item.show == true,
+            iconbiyan: item.show == false
           }"
           @click="isPointVisible(index)"
         ></i>
@@ -56,20 +56,20 @@ export default {
         };
         switch (val) {
           case "风电站":
-            powerStationArr.class = "iconfont iconfont1 icon-fengdianchang";
+            powerStationArr.class = "iconfont iconfont1 iconfengdianchang";
             break;
           case "火电站":
-            powerStationArr.class = "iconfont iconfont1 icon-huodianzhan";
+            powerStationArr.class = "iconfont iconfont1 iconhuodianzhan";
             break;
           case "水电站":
-            powerStationArr.class = "iconfont iconfont1 icon-shuidianzhan";
+            powerStationArr.class = "iconfont iconfont1 iconshuidianzhan";
             break;
           case "光伏发电厂":
-            powerStationArr.class = "iconfont iconfont1 icon-guangfufadianzhan";
+            powerStationArr.class = "iconfont iconfont1 iconguangfufadianzhan";
             break;
           case "抽水蓄能电站":
             powerStationArr.class =
-              "iconfont iconfont1 icon-choushuixunengdianzhan";
+              "iconfont iconfont1 iconchoushuixunengdianzhan";
             break;
         }
         return powerStationArr;

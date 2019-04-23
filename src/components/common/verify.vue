@@ -3,7 +3,7 @@
     <i
       :class="{
         iconfont: true,
-        'icon-yunpingtaidenglu-zhengque': hint.icon == 0
+        iconwait: hint.icon == 0
       }"
     >
     </i>

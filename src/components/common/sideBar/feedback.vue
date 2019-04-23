@@ -37,7 +37,7 @@
         <p>充满乐趣</p>
         <p>而又富有价值</p>
       </div>
-      <img src="/oraitStatic/img/wpSimluate/ORAIT.png" />
+      <img src="/oplan/img/wpSimluate/ORAIT.png" />
     </div>
   </div>
 </template>
@@ -120,7 +120,7 @@ export default {
     .top {
       width: 290px;
       height: 180px;
-      // background: url("/oraitStatic/img/wpSimluate/反馈.svg");
+      // background: url("/oplan/img/wpSimluate/反馈.svg");
       background: linear-gradient(to bottom, #58edd9, #f8dacb);
       border-radius: 10px 10px 0px 0px;
       padding: 25px 19px 0;

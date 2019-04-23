@@ -2,7 +2,7 @@ module.exports = {
   publicPath: "./",
   devServer: {
     proxy: {
-      "/oraitStatic": {
+      "/oplan": {
         target: "https://orait.oss-cn-hangzhou.aliyuncs.com",
         ws: true,
         changeOrigin: true

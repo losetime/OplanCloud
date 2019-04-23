@@ -52,23 +52,23 @@
       <p class="subarea-menu-title">操作</p>
       <div class="map-operation">
         <div @click="bindEvent(0)" class="item-operation">
-          <img src="/oraitStatic/img/common/新建变电站.png" alt="" />
+          <img src="/oplan/img/common/新建变电站.png" alt="" />
           添加变电站
         </div>
         <div @click="bindEvent(1)" class="item-operation">
-          <img src="/oraitStatic/img/common/新建负荷.png" alt="" />
+          <img src="/oplan/img/common/新建负荷.png" alt="" />
           添加负荷
         </div>
         <div class="item-operation">
-          <img src="/oraitStatic/img/common/新建线路.png" alt="" />
+          <img src="/oplan/img/common/新建线路.png" alt="" />
           添加线路
         </div>
         <div class="item-operation">
-          <img src="/oraitStatic/img/common/新建模块.png" alt="" />
+          <img src="/oplan/img/common/新建模块.png" alt="" />
           添加模块
         </div>
         <div class="item-operation">
-          <img src="/oraitStatic/img/common/划定区域.png" alt="" />
+          <img src="/oplan/img/common/划定区域.png" alt="" />
           划定区域
         </div>
       </div>
@@ -269,7 +269,7 @@ export default {
       let marker = new window.AMap.Marker({
         position: e.lnglat,
         map: this.map,
-        icon: "/oraitStatic/img/common/新建变电站.png"
+        icon: "/oplan/img/common/新建变电站.png"
       });
       marker.on("rightclick", this.removePowerPoint);
       marker.on("click", this.addPointInfo);
@@ -295,7 +295,7 @@ export default {
       let marker = new window.AMap.Marker({
         position: e.lnglat,
         map: this.map,
-        icon: "/oraitStatic/img/common/新建负荷.png"
+        icon: "/oplan/img/common/新建负荷.png"
       });
       marker.on("rightclick", this.removeLoadPoint);
       marker.on("click", this.addPointInfo);

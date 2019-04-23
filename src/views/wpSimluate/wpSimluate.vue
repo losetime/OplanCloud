@@ -38,7 +38,14 @@
           placement="left"
           :hide-after="3000"
         >
-          <i class="iconfont icon-baobiaoguanli" @click.stop="isjumpChartUrl && change_globalFlag(4, -4)">
+          <i
+            :class="{
+              iconfont: true,
+              iconbaobiaoguanli: true,
+              isClick: isjumpChartUrl == true
+            }"
+            @click.stop="isjumpChartUrl && change_globalFlag(4, -4)"
+          >
             <i class="line"></i>
           </i>
         </el-tooltip>
@@ -50,7 +57,8 @@
           :hide-after="3000"
         >
           <i
-            class="iconfont icon-xiaoxi" style="display:none;"
+            class="iconfont icon-xiaoxi"
+            style="display:none;"
             @click.stop="change_globalFlag(8, -8)"
           ></i>
         </el-tooltip>
@@ -60,7 +68,6 @@
 </template>
 
 <script>
-
 import header from "../../components/common/header";
 //反馈
 import feedback from "../../components/common/sideBar/feedback";
@@ -75,11 +82,15 @@ export default {
       parameterTitle: ["模拟开始时间", "模拟结束时间", "开始模拟"]
     };
   },
-  mixins:[systemSet],
-  computed:{
-    isjumpChartUrl(){
+  mixins: [systemSet],
+  computed: {
+    isjumpChartUrl() {
       let jumpChartUrl = this.$store.state.module_global.jumpChartUrl;
-      if(jumpChartUrl.funcCheck == 1 && (jumpChartUrl.secondLevelMenuCheck == 1 || jumpChartUrl.secondLevelMenuCheck == 3)){
+      if (
+        jumpChartUrl.funcCheck == 1 &&
+        (jumpChartUrl.secondLevelMenuCheck == 1 ||
+          jumpChartUrl.secondLevelMenuCheck == 3)
+      ) {
         return true;
       } else {
         return false;
@@ -248,7 +259,6 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
         position: relative;
         color: var(--fontColor);
         i.line {
@@ -260,14 +270,20 @@ export default {
           bottom: 0;
         }
         &:hover {
-          background-color: #f5f5f5;
-          color: var(--systemColor);
+          cursor: not-allowed;
         }
         &:last-of-type {
           //反馈位置,待改动位置
           position: absolute;
           bottom: 40px;
           color: var(--systemColor);
+        }
+      }
+      .isClick {
+        &:hover {
+          background-color: #f5f5f5;
+          color: var(--systemColor);
+          cursor: pointer;
         }
       }
     }
