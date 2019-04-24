@@ -5,6 +5,7 @@
  接口目录： /src/assets/service
  图表目录： /src/chart
  组件：  /src/globalComponents （全局组件目前基本没用到，需要进一步完善）
+ 测试一下jenkins
 ```
 
 ## Project setup
