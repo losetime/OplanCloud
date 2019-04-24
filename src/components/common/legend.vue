@@ -12,13 +12,13 @@
         @click="isLineVisible(index)"
       ></i>
     </div>
-    <div>
+    <div class="power-wrap">
       <div
-        class="lineBox"
+        class="powerBox"
         v-for="(item, index) in powerStationArr"
         :key="index"
       >
-        <i :class="item.class"></i>
+        <div :class="item.class"></div>
         <span>{{ item.name }}</span>
         <i
           :class="{
@@ -56,20 +56,19 @@ export default {
         };
         switch (val) {
           case "风电站":
-            powerStationArr.class = "iconfont iconfont1 iconfengdianchang";
+            powerStationArr.class = "fengdianchang";
             break;
           case "火电站":
-            powerStationArr.class = "iconfont iconfont1 iconhuodianzhan";
+            powerStationArr.class = "huodianzhan";
             break;
           case "水电站":
-            powerStationArr.class = "iconfont iconfont1 iconshuidianzhan";
+            powerStationArr.class = "shuidianzhan";
             break;
           case "光伏发电厂":
-            powerStationArr.class = "iconfont iconfont1 iconguangfufadianzhan";
+            powerStationArr.class = "guangfufadianzhan";
             break;
           case "抽水蓄能电站":
-            powerStationArr.class =
-              "iconfont iconfont1 iconchoushuixunengdianzhan";
+            powerStationArr.class = "choushuixunengdianzhan";
             break;
         }
         return powerStationArr;
@@ -108,15 +107,62 @@ export default {
   height: 20px;
   line-height: 20px;
   font-size: 12px;
-  .iconfont1 {
-    color: #fa541c;
-  }
+  // .iconfont1 {
+  //   color: #fa541c;
+  // }
   span {
     display: inline-block;
     width: 100px;
     margin-left: 20px;
   }
 }
+.power-wrap {
+  .powerBox {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-start;
+    .fengdianchang {
+      width: 20px;
+      height: 20px;
+      background-image: url("/oplan/img/common/风电站.png");
+      background-size: 20px;
+    }
+    .huodianzhan {
+      width: 20px;
+      height: 20px;
+      background-image: url("/oplan/img/common/火电站.png");
+      background-size: 20px;
+    }
+    .shuidianzhan {
+      width: 20px;
+      height: 20px;
+      background-image: url("/oplan/img/common/水电站.png");
+      background-size: 20px;
+    }
+    .guangfufadianzhan {
+      width: 20px;
+      height: 20px;
+      background-image: url("/oplan/img/common/光伏发电厂.png");
+      background-size: 20px;
+    }
+    .choushuixunengdianzhan {
+      width: 20px;
+      height: 20px;
+      background-image: url("/oplan/img/common/抽水蓄能电站.png");
+      background-size: 20px;
+    }
+    span {
+      margin: 0px 60px 0 20px;
+      &:nth-child(3) {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
 .lineStyle {
   display: inline-block;
   width: 20px;

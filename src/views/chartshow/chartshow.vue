@@ -13,7 +13,7 @@
             :key="index"
             @click="menuCheck(index)"
           >
-            <i class="iconfont "></i>
+            <i class="iconfont"></i>
             <span>{{ item }}</span>
           </div>
         </div>
@@ -32,11 +32,11 @@ import systemSet from "../../minxis/systemSet.js";
 import header from "../../components/common/header";
 import loadStart from "../../globalComponents/loading";
 export default {
-  data(){
+  data() {
     return {
       topMenuList: ["传统电源", "新能源", "网络", "负荷"],
       funcCheck: 0
-    }
+    };
   },
   mixins: [systemSet],
   methods: {
@@ -58,10 +58,11 @@ export default {
       }
     }
   },
-  mounted(){
-     let htmlHeight = document.documentElement.clientHeight || document.body.clientHeight;
-     let styles = this.$el.style;
-     styles.setProperty("--chartshowHeight",htmlHeight-100+"px");
+  mounted() {
+    let htmlHeight =
+      document.documentElement.clientHeight || document.body.clientHeight;
+    let styles = this.$el.style;
+    styles.setProperty("--chartshowHeight", htmlHeight - 100 + "px");
   },
   components: {
     Header: header,

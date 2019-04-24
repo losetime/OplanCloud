@@ -63,7 +63,7 @@ async function del_file_shallow(SID) {
 //获取潮流线数据数据
 async function getNetWork() {
   await http
-    .get(`http://192.168.31.6:5000/pvplant/getInfo`)
+    .get(`http://192.168.31.16:5000/pvplant/getInfo`)
     .then(res => {
       result = res.data;
     })
@@ -76,7 +76,7 @@ async function getNetWork() {
 //获取潮流节点数据
 async function getTransformerSubPoint() {
   await http
-    .get(`http://192.168.31.6:5000/pvplant/getStationInfoNew`)
+    .get(`http://192.168.31.16:5000/pvplant/getStationInfoNew`)
     .then(res => {
       result = res.data;
     })

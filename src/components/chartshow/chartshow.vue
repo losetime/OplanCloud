@@ -18,7 +18,12 @@
       <div class="content-pie-wrap">
         <div class="content-pie-chart">
           <div class="title">电源结构与电源布局分析</div>
-          <el-carousel :autoplay="false" :interval="4000" indicator-position="none" height="400px">
+          <el-carousel
+            :autoplay="false"
+            :interval="4000"
+            indicator-position="none"
+            height="400px"
+          >
             <el-carousel-item>
               <pieChart :config="layoutAnalyze1"></pieChart>
             </el-carousel-item>
@@ -38,7 +43,12 @@
         </div>
         <div class="content-pie-chart">
           <div class="title">不同类型机组的容量地理分布图</div>
-          <el-carousel :autoplay="false" :interval="4000" indicator-position="none" height="400px">
+          <el-carousel
+            :autoplay="false"
+            :interval="4000"
+            indicator-position="none"
+            height="400px"
+          >
             <el-carousel-item>
               <pieChart :config="layoutAnalyze6"></pieChart>
             </el-carousel-item>
@@ -60,7 +70,12 @@
       <div class="content-pie-wrap">
         <div class="content-pie-chart">
           <div class="title">机组利用小时数分析</div>
-          <el-carousel :autoplay="false" :interval="4000" indicator-position="none" height="400px">
+          <el-carousel
+            :autoplay="false"
+            :interval="4000"
+            indicator-position="none"
+            height="400px"
+          >
             <el-carousel-item>
               <barChart :config="hourAnalyze1"></barChart>
             </el-carousel-item>
@@ -80,7 +95,12 @@
         </div>
         <div class="content-pie-chart">
           <div class="title">机组调峰贡献分析</div>
-          <el-carousel :autoplay="false" :interval="4000" indicator-position="none" height="400px">
+          <el-carousel
+            :autoplay="false"
+            :interval="4000"
+            indicator-position="none"
+            height="400px"
+          >
             <el-carousel-item>
               <scatterChart :config="contributAnalyze1"></scatterChart>
             </el-carousel-item>

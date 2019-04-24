@@ -9,7 +9,7 @@ import { Checkbox } from "element-ui";
 import "../../assets/css/element-variables.scss"; //Element自定义主题
 import vuescroll from "vuescroll";
 import "vuescroll/dist/vuescroll.css";
-import message from "orait-ui";
+import message from "@orait/oraitui";
 
 Vue.use(Checkbox);
 Vue.use(message);

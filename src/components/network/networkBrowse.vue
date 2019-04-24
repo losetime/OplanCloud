@@ -17,7 +17,7 @@
             :value="item.adcode"
           >
           </el-option>
-        </el-select> -->
+        </el-select>-->
         <el-select
           v-model="selectValue2"
           size="small"
@@ -30,8 +30,7 @@
             :key="item.adcode"
             :label="item.name"
             :value="item.adcode"
-          >
-          </el-option>
+          ></el-option>
         </el-select>
         <!-- <el-select
           v-model="selectValue3"
@@ -47,7 +46,7 @@
             :value="item.adcode"
           >
           </el-option>
-        </el-select> -->
+        </el-select>-->
       </div>
       <p class="subarea-menu-title">分层</p>
       <div class="area-wrap">
@@ -61,8 +60,14 @@
       <p class="subarea-menu-title">详细信息</p>
       <div class="area-wrap info-wrap">
         <div>220KV XXX线路</div>
-        <div>数值等级：<span>213KV</span></div>
-        <div>数值信息：<span>183KV</span></div>
+        <div>
+          数值等级：
+          <span>213KV</span>
+        </div>
+        <div>
+          数值信息：
+          <span>183KV</span>
+        </div>
       </div>
     </div>
     <div class="r-wrap">

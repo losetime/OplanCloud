@@ -29,10 +29,5 @@ export default new Router({
       name: "circuit",
       component: circuit
     }
-    // {
-    //   path: "/circuit",
-    //   name: "circuit",
-    //   component: circuit
-    // }
   ]
 });

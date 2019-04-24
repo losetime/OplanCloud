@@ -6,7 +6,7 @@ import "../../registerServiceWorker";
 import axios from "axios";
 import ElementUI from "element-ui";
 import "../../assets/css/element-variables.scss"; //Element自定义主题
-import message from "orait-ui";
+import message from "@orait/oraitui";
 Vue.use(ElementUI);
 Vue.use(message);
 

@@ -5,7 +5,7 @@
       <div class="t-wrap">
         <div class="logo-wrap">
           <i class="iconfont iconshangbiao-mian logo-icon"></i>
-          <p class="logo-text">OPLAN云平台</p>
+          <p class="logo-text">云平台</p>
         </div>
       </div>
       <div class="b-wrap">
@@ -16,7 +16,9 @@
             v-model="username"
             @input="verifyFn"
           />
-          <div class="verify"><Verify :hint="hint.username"></Verify></div>
+          <div class="verify">
+            <Verify :hint="hint.username"></Verify>
+          </div>
         </div>
         <div class="input-item">
           <input
@@ -34,7 +36,9 @@
             }"
             @click="changeEye()"
           ></i>
-          <div class="verify"><Verify :hint="hint.password"></Verify></div>
+          <div class="verify">
+            <Verify :hint="hint.password"></Verify>
+          </div>
         </div>
         <div class="remember-code">
           <el-checkbox v-model="rememberCode">十天内免登录</el-checkbox>

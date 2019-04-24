@@ -8,7 +8,7 @@ import axios from "axios";
 
 import vuescroll from "vuescroll";
 import "vuescroll/dist/vuescroll.css";
-import message from "orait-ui";
+import message from "@orait/oraitui";
 
 Vue.use(vuescroll);
 Vue.use(message);
